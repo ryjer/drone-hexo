@@ -11,7 +11,7 @@ name: default
 
 steps:
 - name: hexo generate
-  image: wryjer/hexo
+  image: ryjer/hexo
   commands:
     - npm install
     - hexo g
@@ -27,7 +27,7 @@ name: default
 
 steps:
 - name: hexo generate
-  image: wryjer/hexo
+  image: ryjer/hexo
   commands:
     - npm install
     - hexo g
@@ -42,7 +42,7 @@ name: default
 
 steps:
 - name: hexo generate
-  image: wryjer/hexo
+  image: ryjer/hexo
   commands:
     - npm config set registry https://registry.npm.taobao.org
     - npm install
