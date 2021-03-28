@@ -59,9 +59,9 @@ jobs:
           cache-from: type=local,src=/tmp/.buildx-cache
           cache-to: type=local,dest=/tmp/.buildx-cache-new
           tags: |
-            ryjer/drone-hexo:lts
-            ryjer/drone-hexo:lts-alpine
             ryjer/drone-hexo:lts-alpine3.13
+            ryjer/drone-hexo:lts-alpine
+            ryjer/drone-hexo:lts
 
       # 编译 buster-slim 推送到 dockerhub
       - name: Build and push Buster-slim

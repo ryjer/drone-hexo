@@ -59,8 +59,8 @@ jobs:
           cache-from: type=local,src=/tmp/.buildx-cache
           cache-to: type=local,dest=/tmp/.buildx-cache-new
           tags: |
-            ryjer/drone-hexo:current-alpine
             ryjer/drone-hexo:current-alpine3.13
+            ryjer/drone-hexo:current-alpine
 
       # 编译 buster-slim 推送到 dockerhub
       - name: Build and push Buster-slim
@@ -73,9 +73,9 @@ jobs:
           cache-from: type=local,src=/tmp/.buildx-cache
           cache-to: type=local,dest=/tmp/.buildx-cache-new
           tags: |
-            ryjer/drone-hexo:slim
-            ryjer/drone-hexo:buster-slim
             ryjer/drone-hexo:current-buster-slim
+            ryjer/drone-hexo:buster-slim
+            ryjer/drone-hexo:slim
        
       # 处理缓存无限增大问题的临时修复，以防出现问题。（等待github官方修复）
       - name: Move cache
