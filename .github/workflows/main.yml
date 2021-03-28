@@ -58,8 +58,8 @@ jobs:
           cache-from: type=local,src=/tmp/.buildx-cache
           cache-to: type=local,dest=/tmp/.buildx-cache-new
           tags: |
-            ryjer/drone-hexo:latest
             ryjer/drone-hexo:alpine
+            ryjer/drone-hexo:latest
         
       # 同步 dockerhub README.md 文件
       - name: Sync Dockerhub README
