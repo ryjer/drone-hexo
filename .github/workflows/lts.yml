@@ -2,8 +2,8 @@ name: build-lts
 
 on:
   schedule:
-  # 每月 5号，2:23执行一次，以同步官方
-  - cron: '23 2 5 * *'
+  # 每月 5号，1:27执行一次，以同步官方
+  - cron: '27 1 5 * *'
   push:
     #branches: [ master ]
     paths:

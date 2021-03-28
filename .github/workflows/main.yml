@@ -2,8 +2,8 @@ name: buildx
 
 on:
   schedule:
-  # 每月 4号，1:44执行一次，以同步官方
-  - cron: '44 1 4 */6 *'
+  # 每月 5号，1:33执行一次，以同步官方
+  - cron: '33 1 5 * *'
   push:
     #branches: [ master ]
     paths:
