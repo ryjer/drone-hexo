@@ -3,7 +3,7 @@ FROM node:lts-alpine3.13
 WORKDIR /hexo
 VOLUME ["/hexo"]
 
-EXPOSE 4000 
+EXPOSE 4000/tcp
 
 RUN npm install -g hexo-cli \
     && npm cache clean -f
