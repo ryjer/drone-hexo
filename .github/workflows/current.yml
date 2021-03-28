@@ -1,14 +1,15 @@
-name: buildx
+name: build-current
 
 on:
   schedule:
-  # 每月 4号，1:44执行一次，以同步官方
-  - cron: '44 1 4 */6 *'
+  # 每月 5号，1:23执行一次，以同步官方
+  - cron: '23 1 5 * *'
   push:
     #branches: [ master ]
     paths:
-    - Dockerfile
-    - docker-entrypoint.sh
+    - current/Dockerfile.alpine
+    - current/Dockerfile.debian
+    - current/docker-entrypoint.sh
   pull_request:
     branches: [ master ]
 
@@ -47,29 +48,35 @@ jobs:
           username: ${{ secrets.DOCKERHUB_USERNAME }}
           password: ${{ secrets.DOCKERHUB_TOKEN }}
       
-      # 编译并推送到 dockerhub
-      - name: Build and push
+      # 编译 Alpine 推送到 dockerhub
+      - name: Build and push Alpine
         uses: docker/build-push-action@v2
         with:
-          context: .
-          file: Dockerfile
+          context: current
+          file: Dockerfile.alpine
           platforms: linux/amd64,linux/arm64,linux/arm/v7
           push: true
           cache-from: type=local,src=/tmp/.buildx-cache
           cache-to: type=local,dest=/tmp/.buildx-cache-new
           tags: |
-            ryjer/drone-hexo:latest
-            ryjer/drone-hexo:alpine
-        
-      # 同步 dockerhub README.md 文件
-      - name: Sync Dockerhub README
-        uses: ms-jpq/sync-dockerhub-readme@v1
+            ryjer/drone-hexo:current-alpine
+            ryjer/drone-hexo:current-alpine3.13
+
+      # 编译 buster-slim 推送到 dockerhub
+      - name: Build and push Buster-slim
+        uses: docker/build-push-action@v2
         with:
-          username: ${{ secrets.DOCKERHUB_USERNAME }}
-          password: ${{ secrets.DOCKERHUB_TOKEN }}
-          repository: ryjer/drone-hexo
-          readme: "./README.md"
-      
+          context: lts
+          file: Dockerfile.debian
+          platforms: linux/amd64,linux/arm64,linux/arm/v7
+          push: true
+          cache-from: type=local,src=/tmp/.buildx-cache
+          cache-to: type=local,dest=/tmp/.buildx-cache-new
+          tags: |
+            ryjer/drone-hexo:slim
+            ryjer/drone-hexo:buster-slim
+            ryjer/drone-hexo:current-buster-slim
+       
       # 处理缓存无限增大问题的临时修复，以防出现问题。（等待github官方修复）
       - name: Move cache
         run: |

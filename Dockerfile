@@ -1,4 +1,4 @@
-FROM node:stretch-slim
+FROM node:alpine3.13
 
 WORKDIR /hexo
 VOLUME ["/hexo"]
