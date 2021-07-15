@@ -16,7 +16,7 @@ name: default
 
 steps:
 - name: hexo generate
-  image: ryjer/hexo
+  image: ryjer/drone-hexo
   commands:
     - npm install
     - hexo g
@@ -32,7 +32,7 @@ name: default
 
 steps:
 - name: hexo generate
-  image: ryjer/hexo
+  image: ryjer/drone-hexo
   commands:
     - npm install
     - hexo g
@@ -47,7 +47,7 @@ name: default
 
 steps:
 - name: hexo generate
-  image: ryjer/hexo
+  image: ryjer/drone-hexo
   commands:
     - npm config set registry https://registry.npm.taobao.org
     - npm install
