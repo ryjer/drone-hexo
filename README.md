@@ -5,6 +5,7 @@
 [![Docker Pulls](https://img.shields.io/docker/pulls/ryjer/drone-hexo.svg)](https://hub.docker.com/r/ryjer/drone-hexo/)
 [![License: GPL v3](https://img.shields.io/badge/License-GPLv3-blue.svg)](https://www.gnu.org/licenses/gpl-3.0)
 
+中文用法请下翻
 ## Usage
 
 Drone plugin to run Hexo commands.
@@ -24,9 +25,9 @@ steps:
 
 ## 用法
 
-本插件在nodejs镜像的基础上安装了hexo-cli 和 git，提供了完整的 hexo-cli 运行环境。
+本插件在nodejs镜像的基础上安装了hexo-cli 和 git，提供了完整的 hexo-cli 运行环境。自带的 git 用于安装主题以及 git 部署（插件是 `hexo-deployer-git`），从而可以完整实现一个hexo博客从安装主题、构建到git部署的整个过程。
 
-要运行一个完整的pipeline（流水线），你还需要其他drone插件的帮助。在 Drone pipeline中，本插件的单步命令如下（请忽略前2行）：
+要运行一个完整的pipeline（流水线），你还需要其他drone插件的帮助。在 Drone pipeline中，本插件的单步命令如下（前2行为全局配置）：
 
 ``` yaml
 kind: pipeline
