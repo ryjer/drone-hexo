@@ -24,7 +24,9 @@ steps:
 
 ## 用法
 
-本插件在nodejs镜像的基础上安装了hexo-cli，提供了完整的 hexo-cli 运行环境。要运行一个完整的pipeline（流水线），你还需要其他drone插件的帮助。在 Drone pipeline中，本插件的单步命令如下（请忽略前2行）：
+本插件在nodejs镜像的基础上安装了hexo-cli 和 git，提供了完整的 hexo-cli 运行环境。
+
+要运行一个完整的pipeline（流水线），你还需要其他drone插件的帮助。在 Drone pipeline中，本插件的单步命令如下（请忽略前2行）：
 
 ``` yaml
 kind: pipeline
