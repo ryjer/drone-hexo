@@ -59,22 +59,21 @@ jobs:
           cache-from: type=local,src=/tmp/.buildx-cache
           cache-to: type=local,dest=/tmp/.buildx-cache-new
           tags: |
-            ryjer/drone-hexo:lts-alpine3.13
+            ryjer/drone-hexo:lts-alpine3.14
             ryjer/drone-hexo:lts-alpine
             ryjer/drone-hexo:lts
 
-      # 编译 buster-slim 推送到 dockerhub
+      # 编译 slim 推送到 dockerhub
       - name: Build and push Buster-slim
         uses: docker/build-push-action@v2
         with:
           context: lts
-          file: lts/Dockerfile.debian
+          file: lts/Dockerfile.slim
           platforms: linux/amd64,linux/arm64,linux/arm/v7
           push: true
           cache-from: type=local,src=/tmp/.buildx-cache
           cache-to: type=local,dest=/tmp/.buildx-cache-new
           tags: |
-            ryjer/drone-hexo:lts-buster-slim
             ryjer/drone-hexo:lts-slim
        
       # 处理缓存无限增大问题的临时修复，以防出现问题。（等待github官方修复）

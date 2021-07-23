@@ -1,4 +1,4 @@
-FROM node:alpine3.13
+FROM node:alpine
 
 WORKDIR /hexo
 VOLUME ["/hexo"]
@@ -6,10 +6,11 @@ VOLUME ["/hexo"]
 EXPOSE 4000 
 
 RUN npm install -g hexo-cli \
-     && apk add --no-cache git openssh \
-    && npm cache clean -f
+    && npm cache clean -f \
+    && apk add --no-cache git openssh
 
 COPY ./docker-entrypoint.sh /docker-entrypoint.sh
+
 ENTRYPOINT ["/docker-entrypoint.sh"]
 
-CMD [ "/bin/bash" ]
+CMD [ "/bin/ash" ]
