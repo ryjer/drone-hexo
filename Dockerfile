@@ -7,7 +7,7 @@ EXPOSE 4000
 
 # 安装 hexo 并清理 npm 缓存
 RUN npm install -g hexo-cli \
-    && npm cache clean -f \
+    && npm cache clean -f
 
 # 安装必要软件包，支持 git ssh-keyscan 命令的运行
 RUN apk add --no-cache git openssh git-lfs ca-certificates && \
